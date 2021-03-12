@@ -9,6 +9,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBAction func startTimer(_ sender: Any) {
+    }
+    @IBAction func stopTimer(_ sender: Any) {
+    }
+    @IBAction func resetTimer(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
