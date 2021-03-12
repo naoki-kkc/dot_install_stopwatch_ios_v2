@@ -8,9 +8,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
     @IBOutlet weak var timerLabel: UILabel!
+    
+    @objc func update(){
+        print(Date.timeIntervalSinceReferenceDate)
+    }
     @IBAction func startTimer(_ sender: Any) {
+        Timer.scheduledTimer(timeInterval: 0.01,
+                             target: self,
+                             selector: #selector(self.update),
+                             userInfo: nil,
+                             repeats: true)
     }
     @IBAction func stopTimer(_ sender: Any) {
     }
