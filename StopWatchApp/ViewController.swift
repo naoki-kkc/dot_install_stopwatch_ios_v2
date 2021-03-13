@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             let t: Double = Date.timeIntervalSinceReferenceDate - startTime + self.elapsedTime
             let minute = Int(t / 60)
             let sec = Int(t) % 60
-            let millisec = Int((t - Double(sec)) * 100)
+            let millisec = Int((t - Double(minute * 60) - Double(sec)) * 100)
             self.timerLabel.text = String(format: "%02d:%02d:%02d", minute, sec, millisec)
         }
     }
