@@ -14,10 +14,11 @@ class ViewController: UIViewController {
     
     var startTime: TimeInterval? = nil
     var timer = Timer()
+    var elapsedTime: Double = 0.0
     
     @objc func update(){
         if let startTime = self.startTime{
-            let t: Double = Date.timeIntervalSinceReferenceDate - startTime
+            let t: Double = Date.timeIntervalSinceReferenceDate - startTime + self.elapsedTime
             let minute = Int(t / 60)
             let sec = Int(t) % 60
             let millisec = Int((t - Double(sec)) * 100)
@@ -34,12 +35,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func stopTimer(_ sender: Any) {
+        if let startTime = self.startTime{
+            self.elapsedTime += Date.timeIntervalSinceReferenceDate - startTime
+        }
         self.timer.invalidate()
     }
     
     @IBAction func resetTimer(_ sender: Any) {
         self.startTime = nil
         self.timerLabel.text = "00:00:00"
+        self.elapsedTime = 0.0
     }
     override func viewDidLoad() {
         super.viewDidLoad()
